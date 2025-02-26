@@ -1,11 +1,13 @@
 package musicaModelos;
 
-public class Audio {
+import org.w3c.dom.ls.LSOutput;
+
+public class Audio implements Classificacao {
     private String titulo;
     private int duracao;
     private int totalReproducao;
     private int curtidas;
-    private int cliassifcacao;
+
 
 
     public String getTitulo() {
@@ -25,7 +27,7 @@ public class Audio {
     }
 
     public int getTotalReproducao() {
-        return totalReproducao;
+        return totalReproducao++;
     }
 
     public void setTotalReproducao(int totalReproducao) {
@@ -36,18 +38,15 @@ public class Audio {
         return curtidas;
     }
 
+    public void curtir(){
+        curtidas++;
+    }
+
+
     public void setCurtidas(int curtidas) {
         this.curtidas = curtidas;
     }
 
-    public int getCliassifcacao() {
-        return cliassifcacao;
-    }
-
-    public void setCliassifcacao(int cliassifcacao) {
-        this.cliassifcacao = cliassifcacao;
-
-    }
 
     public void exibeTitulo(){
         System.out.println("O Nome do podcast é: " + titulo + "\n");
@@ -57,7 +56,15 @@ public class Audio {
         System.out.println("A duração do podcast é:  " + duracao + "\n");
     }
 
-    public void obterClassificação{
 
+    @Override
+    public int getClassificacao() {
+        if (curtidas >= 4 ){
+            return 2;
+        } else if (curtidas >= 2) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

@@ -20,6 +20,9 @@ public class Main {
 
         if (opcaoMenu1 == 0) {
 
+            PodCast podcast = new PodCast();
+            podcast.setTitulo("Flow");
+            podcast.setDuracao(250);
             scanner.nextLine();
 
             do {
@@ -38,9 +41,7 @@ public class Main {
                 opcaoMenu2 = scanner.nextInt();
                 scanner.nextLine(); //
 
-                PodCast podcast = new PodCast();
-                podcast.setTitulo("Flow");
-                podcast.setDuracao(250);
+
 
                 switch(opcaoMenu2){
                     case 1:
@@ -56,12 +57,12 @@ public class Main {
 
                             if (lerPodCast.equals("-1")) {
                                 System.out.println("Saindo da reprodução...");
-                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.obterTotalReproducao() + " reproduçao(oes)!" );
+                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.getTotalReproducao() + " reproduçao(oes)!" );
                                 break;
                             }
 
                             if (lerPodCast.equals(podcast.getTitulo())) {
-                                podcast.incrementaTotalReproducao();
+                                podcast.getTotalReproducao();
                                 System.out.println("Reprodução com Sucesso!");
                             } else{
                                 System.out.println("Podcast não encontrado! Tente novamente.");
@@ -76,17 +77,27 @@ public class Main {
 
                             if (lerPodCast.equals("-1")) {
                                 System.out.println("Saindo da tela de curtida...");
-                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.obterTotalCurtida() + " curtida(s)!" );
+                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.getCurtidas() + " curtida(s)!" );
                                 break;
                             }
 
                             if (lerPodCast.equals(podcast.getTitulo())) {
-                                podcast.incrementaTotalCurtida();
+                                podcast.curtir();
                                 System.out.println("Curtida com Sucesso!");
                             } else{
                                 System.out.println("Podcast não encontrado! Tente novamente.");
                             }
                         }while(lerPodCast != "-1");
+                        break;
+                    case 5:
+                        int classificacao = podcast.getClassificacao();
+                        if (podcast.getClassificacao() == 2){
+                            System.out.println("Podcast Excelente!");
+                        } else if (podcast.getClassificacao() == 1) {
+                            System.out.println("Podcast mediano!");
+                        } else{
+                            System.out.println("Podcast ruim!");
+                        }
                         break;
                     case 6:
                         System.out.println("Podcast encerrado!");
