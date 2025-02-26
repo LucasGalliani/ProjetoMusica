@@ -53,7 +53,7 @@ public class Audio implements Classificacao {
     }
 
     public void exibeDuracao(){
-        System.out.println("A duração do podcast é:  " + duracao + "\n");
+        System.out.println("A duração do podcast é: " + duracao + " minutos" + "\n");
     }
 
 
