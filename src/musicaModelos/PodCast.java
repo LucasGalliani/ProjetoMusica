@@ -20,6 +20,13 @@ public int obterTotalReproducao(){
     return totalReproducao;
 }
 
+public void incrementaTotalCurtida(){
+        totalReproducao++;
+    }
+
+public int obterTotalCurtida(){
+        return totalReproducao;
+    }
 
 
 }

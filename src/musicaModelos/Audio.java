@@ -56,4 +56,8 @@ public class Audio {
     public void exibeDuracao(){
         System.out.println("A duração do podcast é:  " + duracao + "\n");
     }
+
+    public void obterClassificação{
+
+    }
 }

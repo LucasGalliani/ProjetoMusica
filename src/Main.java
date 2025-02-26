@@ -56,6 +56,7 @@ public class Main {
 
                             if (lerPodCast.equals("-1")) {
                                 System.out.println("Saindo da reprodução...");
+                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.obterTotalReproducao() + " reproduçao(oes)!" );
                                 break;
                             }
 
@@ -68,16 +69,34 @@ public class Main {
 
                         }while(lerPodCast != "-1");
                         break;
+                    case 4:
+                        do {
+                            System.out.println("Qual podcast voce quer curtir? ou Aperte -1 para sair!");
+                            lerPodCast = scanner.nextLine();
+
+                            if (lerPodCast.equals("-1")) {
+                                System.out.println("Saindo da tela de curtida...");
+                                System.out.println("O podcast " + podcast.getTitulo() + " teve " + podcast.obterTotalCurtida() + " curtida(s)!" );
+                                break;
+                            }
+
+                            if (lerPodCast.equals(podcast.getTitulo())) {
+                                podcast.incrementaTotalCurtida();
+                                System.out.println("Curtida com Sucesso!");
+                            } else{
+                                System.out.println("Podcast não encontrado! Tente novamente.");
+                            }
+                        }while(lerPodCast != "-1");
+                        break;
                     case 6:
-                        System.out.println("sair");
+                        System.out.println("Podcast encerrado!");
                         break;
                 }
 
+
             } while(opcaoMenu2!= 6);
 
-            while(opcaoMenu2 != 0) {
 
-            }
 
         } else if (opcaoMenu1 == 1) {
 
