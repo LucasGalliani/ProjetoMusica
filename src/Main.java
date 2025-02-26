@@ -1,38 +1,31 @@
-import musicaModelos.Audio;
 import musicaModelos.PodCast;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         int opcaoMenu1 = 0;
         int opcaoMenu2 = 0;
         String menuTexo;
         String lerPodCast;
-
-        PodCast podcast = new PodCast();
-        podcast.setTitulo("Flow");
-        podcast.setDuracao(250);
-
-
+        boolean continuar = true;
 
         System.out.println(" \uD83C\uDFB6 Bem-vindo ao Lucas Sound: Onde a Música e os Podcasts Ganham Vida! \uD83C\uDFA7" + "\n");
 
         System.out.println("Escolha Podcast(0)? ou Musica(1)?");
         Scanner scanner = new Scanner(System.in);
 
-        // do while melhor opçcao
-        // nao precisa de um while do primeiro menu e sim de um if.. para entrar em podcast e musica.
+        opcaoMenu1 = scanner.nextInt();
 
-        while(opcaoMenu1 == 0 || opcaoMenu1 == 1) {
+        if (opcaoMenu1 == 0) {
 
-            opcaoMenu1 = scanner.nextInt();
+            scanner.nextLine();
 
-            if (opcaoMenu1 == 0) {
-
-                    System.out.println("Seja Bem vindo a parte de Podcast!");
-                    System.out.println("Escolhaa as opçoes desjeadas:\n");
-                    menuTexo = """
+            do {
+                System.out.println("Seja Bem vindo a parte de Podcast!\n");
+                System.out.println("Escolhaa as opçoes desjeadas:\n");
+                menuTexo = """
                             1. Mostrar o titulo do Podcast.
                             2. Mostrar duração do Podcast.
                             3. Mostrar o total de reprodução do Podcast.
@@ -40,43 +33,58 @@ public class Main {
                             5. Mostrar a classificação do Podcast.
                             6. Sair
                             """;
-                    System.out.println(menuTexo);
-                    opcaoMenu2 = scanner.nextInt();
-                    scanner.nextLine();
+                System.out.println(menuTexo);
 
-                    // verifica a condição do while
-                    // trocar if por switch case.
-                    // n precisa de varios scanner.nextline , tera que arruma a condiçao do while.
-                    while(opcaoMenu2 != 0) {
-                        if (opcaoMenu2 == 1) {
-                            podcast.exibeTitulo();
-                            scanner.nextLine();
-                        } else if (opcaoMenu2 == 2) {
-                            System.out.println("A duração do podcast é: " +
-                                    podcast.obterDuracao());
-                            scanner.nextLine();
-                        } else if (opcaoMenu2 == 3) {
+                opcaoMenu2 = scanner.nextInt();
+                scanner.nextLine(); //
+
+                PodCast podcast = new PodCast();
+                podcast.setTitulo("Flow");
+                podcast.setDuracao(250);
+
+                switch(opcaoMenu2){
+                    case 1:
+                        podcast.exibeTitulo();
+                        break;
+                    case 2:
+                        podcast.exibeDuracao();
+                        break;
+                    case 3:
+                        do {
                             System.out.println("Qual podcast voce quer reproduzir? ou Aperte -1 para sair!");
                             lerPodCast = scanner.nextLine();
-                                if (lerPodCast.equals(podcast.getTitulo())) {
-                                    podcast.incrementaTotalReproducao();
-                                    System.out.println("Reprodução com sucesso!");
-                                } else if (lerPodCast.equals("-1")){
-                                    System.out.println("Saida com Sucesso!");
-                                    System.out.println("Total reprodução do podcast " + podcast.getTitulo() + " foi: " + podcast.obterTotalReproducao());
-                                    break;
-                                } else{
-                                    System.out.println("Digite um podcast válido!");
-                                }
-                        }
-                    }
 
-            } else if (opcaoMenu1 == 1) {
+                            if (lerPodCast.equals("-1")) {
+                                System.out.println("Saindo da reprodução...");
+                                break;
+                            }
 
-                    System.out.println("Seja Bem vindo a parte de Musica!");
-                    System.out.println("Escolha as opçoes desjeadas:\n");
+                            if (lerPodCast.equals(podcast.getTitulo())) {
+                                podcast.incrementaTotalReproducao();
+                                System.out.println("Reprodução com Sucesso!");
+                            } else{
+                                System.out.println("Podcast não encontrado! Tente novamente.");
+                            }
 
-                    menuTexo = """
+                        }while(lerPodCast != "-1");
+                        break;
+                    case 6:
+                        System.out.println("sair");
+                        break;
+                }
+
+            } while(opcaoMenu2!= 6);
+
+            while(opcaoMenu2 != 0) {
+
+            }
+
+        } else if (opcaoMenu1 == 1) {
+
+            System.out.println("Seja Bem vindo a parte de Musica!");
+            System.out.println("Escolha as opçoes desjeadas:\n");
+
+            menuTexo = """
                             1. Mostrar o titulo do Musica.
                             2. Mostrar duração do Musica.
                             3. Mostrar o total de reprodução do Musica.
@@ -84,11 +92,11 @@ public class Main {
                             5. Mostrar a classificação do Musica.
                             6. Sair
                             """;
-                    System.out.println(menuTexo);
+            System.out.println(menuTexo);
 
-                } else {
-                    System.out.println("Opção inválida!");
-            }
+        } else {
+            System.out.println("Opção inválida!");
         }
+
     }
 }

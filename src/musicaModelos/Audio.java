@@ -50,8 +50,10 @@ public class Audio {
     }
 
     public void exibeTitulo(){
-        System.out.println("O Nome do podcast é: " + titulo);
+        System.out.println("O Nome do podcast é: " + titulo + "\n");
     }
 
-
+    public void exibeDuracao(){
+        System.out.println("A duração do podcast é:  " + duracao + "\n");
+    }
 }
